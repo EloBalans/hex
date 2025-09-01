@@ -1,0 +1,158 @@
+@use "styles/loading";
+@use "styles/button";
+@use "styles/input";
+@use "styles/overrides";
+@use "/libs/web-shared/src/styles/list-item";
+@use "sass:color";
+
+:root {
+  $base-primary-color: #6c5c4e;
+  $base-primary-text-color: #f0e6d2;
+  $base-secondary-color: #3a2e26;
+  $base-danger-color: #dc3545;
+  $base-success-color: #28a745;
+  $base-warning-color: #ffc107;
+  $base-info-color: #38388c;
+  $base-primary-active-color: #5a4f45;
+
+  --app-text-color: #{$base-primary-text-color};
+  --app-background-color: #333;
+
+  --card-background-color: #{color.adjust($base-primary-color, $lightness: -5%)};
+  --card-border-color: #{$base-primary-color};
+  --card-header-background-color: #{$base-primary-color};
+  --card-header-text-color: #{$base-primary-text-color};
+  --card-body-text-color: #{$base-primary-text-color};
+  --card-divider-color: #{color.adjust($base-primary-active-color, $lightness: -5%)};
+
+  --button-primary-background: #{$base-primary-color};
+  --button-primary-text: #{$base-primary-text-color};
+  --button-primary-border: #{color.adjust($base-primary-color, $lightness: -10%)};
+  --button-primary-hover-background: #{color.adjust($base-primary-color, $lightness: 10%)};
+  --button-primary-hover-text: #{$base-primary-text-color};
+  --button-primary-hover-border: #{color.adjust($base-primary-color, $lightness: 0%)};
+  --button-primary-active-background: #{color.adjust($base-primary-color, $lightness: -15%)};
+  --button-primary-active-text: #{$base-primary-text-color};
+  --button-primary-active-border: #{color.adjust($base-primary-color, $lightness: -20%)};
+
+  --button-secondary-background: #{$base-secondary-color};
+  --button-secondary-text: #{$base-primary-text-color};
+  --button-secondary-border: #{color.adjust($base-secondary-color, $lightness: -10%)};
+  --button-secondary-hover-background: #{color.adjust($base-secondary-color, $lightness: 10%)};
+  --button-secondary-hover-text: #{$base-primary-text-color};
+  --button-secondary-hover-border: #{color.adjust($base-secondary-color, $lightness: 0%)};
+  --button-secondary-active-background: #{color.adjust($base-secondary-color, $lightness: -15%)};
+  --button-secondary-active-text: #{$base-primary-text-color};
+  --button-secondary-active-border: #{color.adjust($base-secondary-color, $lightness: -20%)};
+
+  --button-danger-background: #{$base-danger-color};
+  --button-danger-text: white;
+  --button-danger-border: #{color.adjust($base-danger-color, $lightness: -10%)};
+  --button-danger-hover-background: #{color.adjust($base-danger-color, $lightness: 10%)};
+  --button-danger-hover-text: white;
+  --button-danger-hover-border: #{color.adjust($base-danger-color, $lightness: 0%)};
+  --button-danger-active-background: #{color.adjust($base-danger-color, $lightness: -15%)};
+  --button-danger-active-text: white;
+  --button-danger-active-border: #{color.adjust($base-danger-color, $lightness: -20%)};
+
+  --button-ghost-background: transparent;
+  --button-ghost-text: #{$base-primary-color};
+  --button-ghost-border: #{$base-primary-color};
+  --button-ghost-hover-background: #{color.change($base-primary-color, $alpha: 0.2)};
+  --button-ghost-hover-text: #{$base-primary-color};
+  --button-ghost-hover-border: #{color.adjust($base-primary-color, $lightness: -10%)};
+  --button-ghost-active-background: #{color.change($base-primary-color, $alpha: 0.4)};
+  --button-ghost-active-text: #{$base-primary-color};
+  --button-ghost-active-border: #{color.adjust($base-primary-color, $lightness: -20%)};
+
+  --input-background-color: #{color.adjust($base-secondary-color, $lightness: 5%)}; // Jasniejszy szary
+  --input-text-color: #{$base-primary-text-color};
+  --input-border-color: #{color.adjust($base-secondary-color, $lightness: -10%)};
+  --input-focus-border-color: #{$base-primary-color}; // Kolor ramki po focusie, np. główny kolor motywu
+  --input-placeholder-color: #{color.adjust($base-primary-text-color, $alpha: -0.4)}; // Przezroczysty tekst
+  --input-disabled-background-color: #{color.adjust($base-secondary-color, $lightness: -10%)}; // Ciemniejszy szary dla disabled
+  --input-disabled-text-color: #{color.adjust($base-primary-text-color, $alpha: -0.6)};
+
+  --checkbox-border-color: var(--input-border-color);
+  --checkbox-checked-background-color: var(--button-primary-background); // Jak primary button
+  --checkbox-checked-icon-color: white; // Kolor 'znaczka' w checkboxie
+  --checkbox-focus-border-color: var(--input-focus-border-color);
+  --checkbox-disabled-color: var(--input-disabled-background-color);
+
+  --hp-bar-color: #{$base-success-color};
+  --exp-bar-color: #{$base-warning-color};
+  --progress-bar-background: #{color.adjust($base-secondary-color, $lightness: -5%)};
+  --item-background-color: #{$base-secondary-color};
+
+  --profession-warrior-color: #{$base-danger-color};
+  --profession-archer-color: #{$base-success-color};
+  --profession-mage-color: #{$base-info-color};
+
+  --disabled-background: #888;
+  --disabled-text: #bbb;
+  --disabled-border: #777;
+
+  --skeleton-base-color: var(--item-background-color); // Bazowy kolor szkieletu to kolor tła elementu
+  --skeleton-highlight-color: #{color.adjust($base-secondary-color, $lightness: 10%)}; // Jaśniejszy kolor blasku
+
+  --ready-character-color: #{$base-success-color};
+  --not-ready-character-color: #{$base-warning-color};
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #212121;
+  font-family: 'Courier New', monospace;
+  color: white;
+  padding-top: 40px;
+}
+
+.fa-solid {
+  color: var(--button-text-color);
+}
+
+
+.text-header {
+  text-transform: capitalize;
+  color: var(--header-text-color);
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+
+.profession-tag {
+  background-color: #5a4f45;
+  color: #f0e6d2;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  &.warrior {
+    background-color: #8c3838;
+    border-color: #8c3838;
+  }
+  &.archer {
+    background-color: #388c38;
+    border-color: #388c38;
+  }
+  &.mage {
+    background-color: #38388c;
+    border-color: #38388c;
+  }
+
+  &.not-chosen {
+    background-color: #656570;
+    border-color: #656570;
+  }
+}
+.ready {
+  border-color: var(--ready-character-color);
+  box-shadow: 0 0 20px rgba(0, 128, 0, 0.8);
+}
