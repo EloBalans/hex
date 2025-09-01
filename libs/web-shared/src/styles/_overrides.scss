@@ -1,0 +1,57 @@
+
+/* src/styles.scss (lub inny globalny plik SCSS) */
+
+// Upewnij się, że masz importowane zmienne CSS z :root w tym pliku.
+// Jeśli :root jest zdefiniowany bezpośrednio w tym pliku, to jest OK.
+
+.custom-container {
+  // Klasa, którą dodajesz do <mat-dialog-container> lub elementu nadrzędnego
+  // aby nadać mu niestandardowe style.
+
+  .mat-mdc-dialog-surface {
+    border-radius: 10px !important; // Zaokrąglone rogi, nadpisanie Material
+    border: 3px solid var(--card-border-color); // Użyjemy koloru obramowania karty
+    background-color: var(--card-background-color); // Użyjemy koloru tła karty
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); // Dodaj cień, jak do kart
+
+    .mat-mdc-dialog-title {
+      // Angular Material używa mat-mdc-dialog-title
+      // Aby zaokrąglenia działały poprawnie, ten element może potrzebować
+      // być stylizowany, ale często lepiej, aby nagłówek karty miał takie same rogi jak sama karta.
+      // Usuwam border-radius, bo mat-mdc-dialog-surface już ma.
+      // Jeśli chcesz konkretnie inne zaokrąglenie w nagłówku, możesz przywrócić.
+      padding: 16px !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      background-color: var(--card-header-background-color); // Tło nagłówka karty
+      border-bottom: 3px solid var(--button-primary-border); // Linia pod nagłówkiem (jak w app-card)
+      text-transform: capitalize;
+      color: var(--card-header-text-color); // Kolor tekstu nagłówka karty
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 1.3em; // Trochę większy rozmiar, jak w app-card
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.2;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+
+      &::before {
+        height: 1rem;
+      }
+    }
+
+    // Dodatkowo, możesz chcieć stylizować mat-mdc-dialog-content i mat-mdc-dialog-actions
+    .mat-mdc-dialog-content {
+      padding: 16px !important; // Spójny padding
+      color: var(--card-body-text-color); // Kolor tekstu ciała karty
+      // ... inne style dla treści dialogu
+    }
+
+    .mat-mdc-dialog-actions {
+      padding: 16px !important; // Spójny padding
+      justify-content: flex-end; // Standardowe ułożenie przycisków
+      // ... inne style dla przycisków akcji dialogu
+    }
+  }
+}

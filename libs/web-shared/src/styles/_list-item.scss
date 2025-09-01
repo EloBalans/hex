@@ -1,0 +1,92 @@
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.list-item {
+  border-radius: 10px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between; // Rozłożenie elementów
+  align-items: center;
+  width: 100%;
+  text-transform: capitalize;
+  //font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  //font-size: 1.1em;
+  color: var(--app-text-color);
+  background-color: var(--item-background-color);
+  border: 3px solid var(--card-border-color);
+  position: relative;
+  box-sizing: border-box;
+  min-width: 300px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  }
+
+  &.loading {
+    color: transparent;
+    pointer-events: none;
+    cursor: default;
+
+    background-image: linear-gradient(to right,
+      var(--skeleton-base-color) 0%,
+      var(--skeleton-highlight-color) 20%,
+      var(--skeleton-base-color) 40%,
+      var(--skeleton-base-color) 100%
+    );
+    background-size: 900px 100%; /* Dłuższy gradient */
+    animation: shimmer 1.5s infinite linear;
+  }
+
+  .loading & > * {
+    visibility: hidden;
+  }
+}
+
+
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+// Jeśli chcesz mieć inny efekt pulsowania:
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0.8; }
+}
+
+.header-loading {
+  background-color: var(--skeleton-base-color); /* Kolor tła */
+  border-radius: 4px; /* Zaokrąglone rogi, jak "tekst" */
+  height: 1.5em; /* Typowa wysokość dla tekstu nagłówka */
+  width: 60%; /* Szerokość, może być dynamiczna, np. 60-80% */
+  margin: 0; /* Usuń marginesy, jeśli to konieczne */
+
+  position: relative; /* Ważne dla animacji shimmer */
+  overflow: hidden; /* Ważne dla animacji shimmer */
+
+  /* Animacja shimmer */
+  background-image: linear-gradient(to right,
+    var(--skeleton-base-color) 0%,
+    var(--skeleton-highlight-color) 20%,
+    var(--skeleton-base-color) 40%,
+    var(--skeleton-base-color) 100%
+  );
+  background-size: 900px 100%;
+  animation: shimmer 1.5s infinite linear;
+
+  // Jeśli wolisz animację pulsowania, użyj tej i usuń shimmer:
+  // animation: pulse 1.5s infinite ease-in-out;
+}

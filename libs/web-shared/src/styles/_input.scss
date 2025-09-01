@@ -1,0 +1,116 @@
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="reset"]):not([type="button"]),
+textarea,
+select {
+  border-radius: 10px;
+  border: 3px solid var(--input-border-color); // Zmieniono na input-border-color
+  padding: 12px 15px; // Użyjemy padding z .btn-medium, ale dla inputów
+  background-color: var(--input-background-color); // Zmieniono na input-background-color
+  color: var(--input-text-color); // Zmieniono na input-text-color
+  font-size: 1em; // Jak .btn-medium
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%; // Pełna szerokość
+  box-sizing: border-box; // Aby padding nie rozszerzał elementu
+
+  &.ng-touched.ng-invalid {
+    border: 3px solid var(--input-invalid-border-color); // Czerwone obramowanie
+  }
+
+  &:focus {
+    border-color: var(--input-focus-border-color); // Kolor ramki po focusie
+    background-color: var(--input-background-color); // Tło pozostaje to samo lub lekko się zmienia
+    box-shadow: 0 0 10px var(--input-focus-shadow-color);  // Złoty cień
+  }
+
+  &:hover {
+    border-color: var(--input-hover-border-color);  // Kolor ramki przy najechaniu
+  }
+
+  &::placeholder {
+    color: var(--input-placeholder-color);
+  }
+
+  &:disabled,
+  &[readonly] {
+    background-color: var(--input-disabled-background-color);
+    color: var(--input-disabled-text-color);
+    cursor: not-allowed;
+    border-color: var(--input-disabled-background-color);
+  }
+}
+
+/* === Style dla Checkboxów === */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  border: 3px solid var(--checkbox-border-color);
+  background-color: var(--checkbox-background-color);
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.2s ease;
+  outline: none; // Usuwamy outline, bo dodamy focus
+
+  &:checked {
+    background-color: var(--checkbox-checked-background-color);
+    border-color: var(--checkbox-checked-background-color);
+  }
+
+  &:checked::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 4px;
+    width: 6px;
+    height: 10px;
+    border: solid var(--checkbox-checked-icon-color);
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--checkbox-hover-border-color);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px var(--checkbox-focus-border-color);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+    background-color: var(--input-disabled-background-color);
+    border-color: var(--input-disabled-background-color);
+  }
+}
+
+label {
+  color: var(--label-text-color);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 15px;
+  cursor: pointer;
+  user-select: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--label-text-color);
+
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+
+  input[type="checkbox"]:disabled + span {
+    color: var(--input-disabled-text-color);
+    cursor: not-allowed;
+  }
+}
