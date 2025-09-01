@@ -4,7 +4,10 @@
     "declarationMap": true,
     "importHelpers": true,
     "isolatedModules": true,
-    "lib": ["es2022", "dom"],
+    "lib": [
+      "es2022",
+      "dom"
+    ],
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "noEmitOnError": true,
@@ -15,11 +18,18 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["development"],
+    "customConditions": [
+      "development"
+    ],
     "declaration": false,
     "paths": {
-      "@hex/server-lobby": ["apps/server-lobby/src/index.ts"],
-      "@hex/web-lobby": ["apps/web-lobby/src/index.ts"]
-    }
+      "@hex/server-lobby": [
+        "apps/server-lobby/src/index.ts"
+      ],
+      "@hex/web-lobby": [
+        "apps/web-lobby/src/index.ts"
+      ]
+    },
+    "baseUrl": "."
   }
 }
